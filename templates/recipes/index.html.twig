@@ -5,17 +5,17 @@
 {% block body %}
     <h1>Recipes index</h1>
 
-    <table class="table">
+    <table class="table table-hover">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Recipe</th>
-                <th>Created_at</th>
-                <th>actions</th>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Recipe</th>
+                <th scope="col">Created_at</th>
+                <th scope="col">actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-secondary">
         {% for recipe in recipes %}
             <tr>
                 <td>{{ recipe.id }}</td>
@@ -23,8 +23,8 @@
                 <td>{{ recipe.recipe }}</td>
                 <td>{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('recipes_show', {'id': recipe.id}) }}">show</a>
-                    <a href="{{ path('recipes_edit', {'id': recipe.id}) }}">edit</a>
+                    <a class="btn-outline-info" href="{{ path('recipes_show', {'id': recipe.id}) }}">show</a>
+                    <a class="btn-outline-warning" href="{{ path('recipes_edit', {'id': recipe.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
