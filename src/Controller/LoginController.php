@@ -24,6 +24,6 @@ class LoginController extends AbstractController
     #[Route('/logout', name: 'logout')]
     public function logout(): void
     {
-       throw new Exception('Oups');
+        throw new Exception('Oups');
     }
 }

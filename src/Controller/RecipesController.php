@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Recipes;
 use App\Form\RecipesType;
-use \DateTimeImmutable;
+use DateTimeImmutable;
 use App\Repository\RecipesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Util\Filesystem;
@@ -39,17 +39,16 @@ class RecipesController extends AbstractController
             /** @var UploadedFile $recipeFile */
             $recipeFile = $form->get('imageFile')->getData();
 
-            if ($recipeFile ) {
-               $newFilename = uniqid().'.'.$recipeFile ->guessExtension();
+            if ($recipeFile) {
+                $newFilename = uniqid().'.'.$recipeFile ->guessExtension();
 
                 try {
                     $recipeFile ->move(
                         $this->getParameter('kernel.project_dir') .'/public/uploads/',
-                                $newFilename
+                        $newFilename
                     );
                 } catch (FileException $e) {
                     $this->addFlash('error', $e->getMessage());
-
                 }
 
                 $recipe->setRecipeImagePath($newFilename);
@@ -102,7 +101,7 @@ class RecipesController extends AbstractController
             $entityManager->remove($recipe);
             $entityManager->flush();
 
-           // $fs = new Filesystem();
+            // $fs = new Filesystem();
            // $fs->remove($this->getParameter('kernel.project_dir') .'/public/uploads/'. $filename);
         }
 
