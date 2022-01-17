@@ -46,6 +46,8 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan-doctrine": "^1.0",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "6.0.*",
         "symfony/css-selector": "6.0.*",
@@ -86,6 +88,12 @@
         "symfony/polyfill-php80": "*"
     },
     "scripts": {
+        "cs-fix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
+        "phpstan": "./vendor/bin/phpstan analyze src",
+        "check-quality": [
+            "@cs-fix",
+            "@phpstan"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

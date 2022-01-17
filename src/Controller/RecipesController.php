@@ -36,7 +36,7 @@ class RecipesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $recipeFile */
+            /** @var UploadedFile|null $recipeFile */
             $recipeFile = $form->get('imageFile')->getData();
 
             if ($recipeFile) {
